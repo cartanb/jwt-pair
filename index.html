@@ -75,7 +75,12 @@
               },
             });
             const notes = await axios.get(
-              `/api/users/${response.data.id}/notes`
+              `/api/users/${response.data.id}/notes`,
+              {
+                headers: {
+                  authorization: token,
+                },
+              }
             );
             this.setState({
               auth: response.data,
