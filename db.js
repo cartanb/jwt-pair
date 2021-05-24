@@ -81,11 +81,7 @@ const syncAndSeed = async () => {
       password: 'moe_pw',
       notes: [{ text: 'CCC' }, { text: 'DDD' }],
     },
-    {
-      username: 'larry',
-      password: 'larry_pw',
-      notes: [{ text: 'EEE' }, { text: 'FFF' }],
-    },
+    { username: 'larry', password: 'larry_pw', notes: [{ text: 'EEE' }, { text: 'FFF' }],},
   ];
   const [lucy, moe, larry] = await Promise.all(
     credentials.map((credential) => User.create(credential, { include: Note }))
