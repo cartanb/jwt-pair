@@ -59,11 +59,7 @@ User.authenticate = async ({ username, password }) => {
 
 User.beforeCreate(async (user) => {
     const salt = 5; //random number
-    await bcrypt.hash(user.password, salt, function (err, hash) {
-        user.password = hash;
-        console.log(user.password);
-    });
-    await console.log("pass", user.password);
+    user.password = await bcrypt.hash(user.password, salt);
 });
 
 const syncAndSeed = async () => {
